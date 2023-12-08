@@ -22,7 +22,7 @@ import javax.swing.border.LineBorder;
  * @author Zero
  */
 public class ClientMenu extends JFrame implements KeyListener{
-//    PingPongGame ppg;
+    public static GameFrame gm;
     public JButton Char1 , Char2 , Char3;
     public int P2ChosenCharNum=1;
 
@@ -32,19 +32,19 @@ public class ClientMenu extends JFrame implements KeyListener{
     JButton Ready;
     JButton ChooseChar;
     JTextArea ServerIP;
+    JLabel enterIp;
 
     private ClientSocket clientSocket;
     
     public ClientMenu(){
-
+        gm = new GameFrame();
 //        connectToServer(localhost.getText(), port);
-
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(this);
         setFocusable(true);  
         setSize(gameWidth, gameHeight);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("PingPongGame");
+        setTitle("ClientPlayer");
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -54,7 +54,7 @@ public class ClientMenu extends JFrame implements KeyListener{
         BackButton = new JButton("Back to Main menu");
         BackButton.setBounds(0, 0, 1000, 100);
         BackButton.setBackground(Color.white);
-        JLabel enterIp = new JLabel("Enter server's ip:");
+        enterIp = new JLabel("Enter server's ip:");
         enterIp.setBounds(0, 125,250,100);
         Font font = new Font("Arial", Font.PLAIN, 30);
         enterIp.setFont(font);
@@ -130,7 +130,7 @@ public class ClientMenu extends JFrame implements KeyListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Connect to the server
-                connectToServer("localhost", 12345);
+                connectToServer("localhost", 12345,gm);
 
                 // Set focus on the ClientMenu to capture key events
                 requestFocusInWindow();
@@ -160,16 +160,23 @@ public class ClientMenu extends JFrame implements KeyListener{
         ServerIP.addKeyListener(this);
 
     }
-    public void displayPingPongGame() {  
-//        if (ppg == null) {
-//            ppg = new PingPongGame();
-//            ppg.setBounds(0, 0, gameWidth, gameHeight);
-//            add(ppg);
-//            remove(Ready);
-//            remove(BackButton);
-//            remove(ServerIP);
-//            revalidate();
-//            repaint();
+    public void displayGameFrame() {  
+        System.out.println("displayGameFrame ajilsan");
+//        if (gm == null) {
+            System.out.println("displayGameFrame gm==null ajilsan");
+            gm = new GameFrame();
+            gm.setBounds(0, 0, gameWidth, gameHeight);
+            add(gm);
+        remove(BackButton);
+        remove(Ready);
+        remove(enterIp);
+        remove(ServerIP);
+        remove(ChooseChar);
+        remove(Char1);
+        remove(Char2);
+        remove(Char3);
+            revalidate();
+            repaint();
 //        }
     }
     @Override
@@ -185,27 +192,14 @@ public class ClientMenu extends JFrame implements KeyListener{
 //            System.out.println("ene ajiljinu");
             clientSocket.sendMessage(String.valueOf(pressedKey));
         }
-        //Paddle 2222222222222222222222222222222222222222222222222222222222
-//        switch (e.getKeyChar()) {
-//            case 'a':
-//                ppg.setPaddle1Location(ppg.getPaddle1Location() - 20);
-//                ppg.revalidate(); 
-//                ppg.repaint(); 
-//                break;
-//            case 'd':
-//                ppg.setPaddle1Location(ppg.getPaddle1Location() + 20);
-//                ppg.revalidate(); 
-//                ppg.repaint(); 
-//                break;
-//        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
     }
-            public void connectToServer(String serverIP, int port) {
+            public void connectToServer(String serverIP, int port,GameFrame gm) {
         // Establish a socket connection when the user enters the server's IP
-        clientSocket = new ClientSocket(this,serverIP, 12345);
+        clientSocket = new ClientSocket(this,serverIP, 12345,gm);
 
         // Display a message based on the connection status
         if (clientSocket != null) {

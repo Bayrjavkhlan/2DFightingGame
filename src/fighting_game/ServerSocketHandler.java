@@ -46,12 +46,16 @@ public class ServerSocketHandler extends Thread {
                 String receivedMessage = input.readLine();
                 if (receivedMessage != null) {
                     System.out.println("Client pressed: " + receivedMessage);
-                if (receivedMessage.equalsIgnoreCase("a")) {
-                    System.out.println("\na daragsan genee ajilchach chi\n");
-                    gm.setBackgroundColorByString("pink");
-                } else {
-                    gm.setBackgroundColorByString(receivedMessage);
-                }
+                    ServerMenu.gm.setBackgroundColorByStringChar1(receivedMessage);
+                    ServerMenu.gm.revalidate();
+                    ServerMenu.gm.repaint();
+
+//                if (receivedMessage.equalsIgnoreCase("a")) {
+//                    System.out.println("\na daragsan genee ajilchach chi\n");
+//                    gm.setBackgroundColorByString("pink");
+//                } else {
+//                    gm.setBackgroundColorByString(receivedMessage);
+//                }
 
             
                 }
@@ -62,24 +66,16 @@ public class ServerSocketHandler extends Thread {
     }
 
     public void sendMessage(String message) {
+            System.out.println("Server Char2 hudulguh gj uzedena");
+            ServerMenu.gm.setBackgroundColorByStringChar2(message);
+            ServerMenu.gm.revalidate();
+            ServerMenu.gm.repaint();
         System.out.println("Sending message: " + message);
         if (output != null) {
             output.println(message);
+
         }
-//        Paddle 222222222222222222222222222222222222222222222222
-        switch (message) {
-            case "a":
-//                sm.paddle1moveRigth();
-//                ppg.setPaddle2Location(ppg.getPaddle1Location() - 20);
-//                ppg.revalidate(); 
-//                ppg.repaint();  
-                        break;
-            case "d":
-//                ppg.setPaddle2Location(ppg.getPaddle1Location() + 20);
-//                ppg.revalidate(); 
-//                ppg.repaint(); 
-                break;
-        }
+
         
     }
 //    public String receiveMessage() throws IOException {

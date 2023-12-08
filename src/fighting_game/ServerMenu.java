@@ -27,7 +27,7 @@ import static fighting_game.PortChecker.isPortAvailable;
  * @author Zero
  */
 public class ServerMenu extends JFrame implements KeyListener{
-    GameFrame gm;
+    public static GameFrame gm;
     ServerMenu sm;
     private ServerSocketHandler serverSocketHandler;
     public JButton BackButton;
@@ -48,6 +48,7 @@ public class ServerMenu extends JFrame implements KeyListener{
         setSize(gameWidth, gameHeight);
         setResizable(false);
         setLocationRelativeTo(null);
+        setTitle("ServerPlayer");
         Font font = new Font("Arial", Font.PLAIN, 30);
         System.out.println("Server Menu orson");
         setLayout(null);
@@ -134,6 +135,7 @@ public class ServerMenu extends JFrame implements KeyListener{
 //                gm = new GameFrame();
                 gm.setVisible(true);
                 add(gm);
+                remove(BackButton);
                 remove(ipAddressLabel);
                 remove(connectedPlayerIp);
                 remove(connectedPlayerIpDisp);
