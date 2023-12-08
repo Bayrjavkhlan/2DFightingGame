@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fighting_game;
-
+//
+//fhfh
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;

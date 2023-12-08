@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 public class PortChecker {
-
+//fhfh
     public static boolean isPortAvailable(int port) {
         try (ServerSocket ignored = new ServerSocket(port)) {
             return true; // Port is available
