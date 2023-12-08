@@ -11,8 +11,6 @@ import javax.swing.JLabel;
  *
  * @author Zero
  */
-//test
-
 public class Character extends JLabel{
     int  WIDTH = 80 , HEIGHT = 200;
     int x = 0 , y = 0;

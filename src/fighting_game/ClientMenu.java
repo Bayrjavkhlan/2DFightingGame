@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fighting_game;
-//dsadas
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -23,7 +23,6 @@ import javax.swing.border.LineBorder;
  */
 public class ClientMenu extends JFrame implements KeyListener{
 //    PingPongGame ppg;
-    public int test;
     public JButton Char1 , Char2 , Char3;
     public int P2ChosenCharNum=1;
 

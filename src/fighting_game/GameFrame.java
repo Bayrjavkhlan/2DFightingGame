@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fighting_game;
-//ghdksg
+
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
