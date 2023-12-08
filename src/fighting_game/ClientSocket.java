@@ -1,5 +1,5 @@
 package fighting_game;
-
+//test
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
